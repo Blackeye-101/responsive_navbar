@@ -1,0 +1,147 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 100px;
+  background: #262626;
+  width: 100%;
+}
+
+header .logo {
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  font-size: 24px;
+  float: left;
+  font-weight: bold;
+}
+
+header nav {
+  float: right;
+}
+
+header nav ul {
+  display: flex;
+}
+
+header nav ul li {
+  list-style: none;
+  position: relative;
+}
+header nav ul li.sub-menu::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f0dd";
+  color: #fff;
+  line-height: 50px;
+  position: absolute;
+  right: 5px;
+}
+
+header nav ul li:hover::before{
+    color: #262626;
+}
+
+header nav ul li.active.sub-menu::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0de";
+    color: #262626;
+}
+
+header nav ul li ul {
+  position: absolute;
+  left: 0;
+  background: #262626;
+  display: none;
+}
+
+header nav ul li ul li {
+  display: block;
+  width: 200px;
+}
+
+header nav ul li.active ul {
+  display: block;
+}
+
+header nav ul li a {
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+  margin: 2px;
+  text-decoration: none;
+  display: block;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+  color: #262626;
+  background: skyblue;
+  border-radius: 5px;
+}
+
+.menu-toggle {
+  color: #fff;
+  float: right;
+  line-height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 991px) {
+  header {
+    padding: 0 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  header nav {
+    position: absolute;
+    top: 50px;
+    height: calc(100vh - 50px);
+    /* height: 100vh; this causes scrolling which we do not want in case of drop down menu */
+    width: 100%;
+    background: #262626;
+    left: -100%;
+    transition: 0.5s;
+  }
+
+  header nav.active {
+    left: 0;
+  }
+
+  header nav ul {
+    display: block;
+    text-align: center;
+  }
+
+  header nav ul li a {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  header nav ul li.active ul{
+      position: relative;
+      background: gray;
+  }
+
+  header nav ul li ul li{
+      width: 100%;
+  }
+}
